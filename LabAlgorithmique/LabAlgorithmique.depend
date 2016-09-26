@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1474895676 source:c:\documents\formation-c\labalgorithmique\main.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+
+1474889316 c:\documents\formation-c\labalgorithmique\list.h
+
+1474895654 source:c:\documents\formation-c\labalgorithmique\list.c
+	<stdio.h>
+	"list.h"
+
