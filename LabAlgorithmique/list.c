@@ -1,19 +1,37 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "list.h"
 
-List* allocateList()
-{
-    return (List*) malloc(sizeof(List));
-}
-
-void freeList( List* list )
+/*void freeList( List* list )
 {
     if( list == NULL )
         return;
 
-    freeList(list->tail);
+    freeList( list->tail );
 
-    free(list);
+    free( list );
+}*/
+
+void freeList( List* list )
+{
+    while( list != NULL )
+    {
+        List* tail = list->tail;
+
+        free( list );
+
+        list = tail;
+    }
+}
+
+List* createList( int head, List* tail )
+{
+    List* list = allocateList();
+
+    setHead( list, head );
+    setTail( list, tail );
+
+    return list;
 }
 
 void setHead( List* list, int value )
@@ -26,32 +44,39 @@ void setTail( List* list, List* tail )
     list->tail = tail;
 }
 
-List* createList( int head, List* tail )
+List* allocateList()
 {
-    List* list = allocateList();
-    setHead(list, head);
-    setTail(list, tail);
-    return list;
-}
-
-int listSize( List* list )
-{
-    int size = 0;
-    while( list != NULL )
-    {
-        size++;
-        list = list->tail;
-    }
-    return size;
+    return (List*) malloc(sizeof(List));
 }
 
 void printList( List* list )
 {
-    // refactor en boucle
-    while(list != NULL)
+    while( list != NULL )
     {
-        printf("%d ", list->head);
+        printf( "%d ", list->head );
         list = list->tail;
     }
-    printf("\r\n");
+
+    printf("\n");
 }
+
+int listSize(List* list)
+{
+    if( list == NULL )
+        return 0;
+
+    return 1 + listSize( list->tail );
+}
+
+/*int listSize(List* list)
+{
+    int result = 0;
+
+    while( list != NULL )
+    {
+        result++;
+        list = list->tail;
+    }
+
+    return result;
+}*/

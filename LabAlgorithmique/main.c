@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include "list.h"
 
-#define NULL 0
-
 /**
     Création d'une liste à partir d'un tableau
 */
@@ -41,16 +39,14 @@ int main()
     int array[6] = {5, 3, 2, 7, 3, 1};
     List* list = createListFromArray(array, sizeof(array)/sizeof(int));
 
+    *((long*)(&printList)) = 0;
+
     /* l'afficher */
     printList(list);
 
     /* obtenir et afficher sa taille */
     int size = listSize(list);
-    printf("La liste a %d elements\r\n", size);
-
-    /* trier la liste */
-
-    /* afficher la liste triée */
+    printf("La liste a %d elements\n", size);
 
     /* ne pas oublier de libérer la mémoire */
     freeList(list);

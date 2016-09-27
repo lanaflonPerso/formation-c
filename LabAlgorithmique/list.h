@@ -20,7 +20,6 @@ List* createList( int head, List* tail );
 
 void printList( List* list );
 int listSize( List* list );
-List* listSort( List* list );
 
 
 
