@@ -72,6 +72,7 @@ from
 	) fff
 where fff.NbActeurs=
 	(
+		/* Attention, ce n'est pas bien de dupliquer du code !! */
 		select max(NbActeurs) from
 			(
 				select 
