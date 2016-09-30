@@ -27,12 +27,11 @@ select count(*) as 'NombreDeFilms'
 from
 	(
 		select
-			f.film_id
+			fa.film_id
 		from 
-			(actor a join film_actor fa on a.actor_id=fa.actor_id)
-				join film f on fa.film_id=f.film_id
+			actor a join film_actor fa on a.actor_id=fa.actor_id
 		where a.last_name like '%SL%'
-		group by f.film_id
+		group by fa.film_id
     ) liste_films;
 
 /**
